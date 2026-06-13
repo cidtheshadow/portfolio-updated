@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --midnight-blue: 15 23 42;
+  --rose-gold: 183 110 121;
+  --cream: 254 249 242;
+  --blush-pink: 248 225 231;
+}
+
+@layer base {
+  body {
+    @apply bg-deep-space text-slate-100 font-sans antialiased overflow-x-hidden;
+    background-image: radial-gradient(circle at 15% 50%, rgba(183, 110, 121, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(0, 242, 254, 0.03), transparent 25%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #060913;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 9999px;
+  border: 2px solid #060913;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  @apply bg-[#0e1628]/40 backdrop-blur-xl border border-white/[0.07] shadow-[0_8px_32px_0_rgba(0,0,0,0.4)];
+}
+
+.glass-panel-glow {
+  @apply relative overflow-hidden;
+}
+
+.glass-panel-glow::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.section-padding {
+  @apply py-20 md:py-32;
+}
+
+/* Text Gradient */
+.text-gradient {
+  @apply bg-gradient-to-r from-[#d4a0a8] via-[#b76e79] to-[#8a4e58] bg-clip-text text-transparent;
+}
+
+.text-gradient-cyan {
+  @apply bg-gradient-to-r from-[#00f2fe] to-[#4facfe] bg-clip-text text-transparent;
+}
+
+/* Glow effects */
+.hover-glow-cyan:hover {
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.hover-glow-rose:hover {
+  box-shadow: 0 0 15px rgba(183, 110, 121, 0.3);
+}
+
+.border-gradient-hover {
+  position: relative;
+}
+
+.border-gradient-hover::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(45deg, #b76e79, #00f2fe);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.border-gradient-hover:hover::after {
+  opacity: 1;
+}
+
+/* Animated Grid Overlay */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at 50% 50%, black, transparent 80%);
+  pointer-events: none;
+}
+
+/* Scroll-Driven Reveals with JS Fallback support */
+.scroll-reveal {
+  @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+}
+
+.scroll-reveal.revealed {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Standard Keyframe Animations */
+.fade-in {
+  @apply opacity-0 translate-y-8 transition-all duration-1000 ease-out;
+}
+
+.fade-in.appear {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Print Styles for 1-Click PDF Resume */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt !important;
+  }
+  header, footer, button, .no-print {
+    display: none !important;
+  }
+  .print-page-break {
+    page-break-before: always;
+  }
+  .glass-panel {
+    background: transparent !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
