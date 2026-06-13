@@ -242,7 +242,7 @@ export default function ContactSection() {
                   <div>
                     <h4 className="font-bold text-xs text-slate-500 uppercase tracking-wider">Instagram</h4>
                     <Link
-                      href="https://instagram.com/singla_tanush"
+                      href="https://instagram.com/by.tanush"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover:text-amber-400 transition-colors text-sm font-semibold mt-1 block"
