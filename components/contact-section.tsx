@@ -247,7 +247,7 @@ export default function ContactSection() {
                       rel="noopener noreferrer"
                       className="text-white hover:text-amber-400 transition-colors text-sm font-semibold mt-1 block"
                     >
-                      @singla_tanush
+                      @by.tanush
                     </Link>
                   </div>
                 </div>
